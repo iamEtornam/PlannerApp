@@ -24,3 +24,11 @@ class SaveFailed extends TodoState {
   @override
   List<Object> get props => [];
 }
+
+class SaveCategories extends TodoState {
+  final cat.Category? category;
+  const SaveCategories({this.category});
+
+  @override
+  List<Object> get props => [];
+}

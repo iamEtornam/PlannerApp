@@ -21,3 +21,8 @@ class GetTodos extends TodoEvent {
   @override
   String toString() => 'Get Todo';
 }
+
+class GetCategories extends TodoEvent {
+  @override
+  String toString() => 'Get Categories';
+}

@@ -39,7 +39,7 @@ class AuthView extends StatelessWidget {
           const Spacer(),
           Center(
             child: TextButton(
-                onPressed: () {
+                onPressed: () async{
                   context.read<AuthBloc>().add(AuthStarted());
                 },
                 child: Padding(

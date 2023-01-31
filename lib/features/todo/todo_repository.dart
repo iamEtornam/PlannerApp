@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:planner_app/models/category.dart' as cat;
 import 'package:planner_app/models/todo.dart';
 import 'package:planner_app/utils/http_utils.dart';
 
@@ -7,6 +8,7 @@ abstract class TodosRepository {
   Future<bool> addNewTodo(Fields todo);
   Future<List<Documents>?> todos();
   Future<bool> updateTodo(Fields todo, {required String documentId});
+  Future<cat.Category?> getCategories();
 }
 
 class TodosRepositoryImpl implements TodosRepository {
@@ -40,5 +42,15 @@ class TodosRepositoryImpl implements TodosRepository {
       return true;
     }
     return false;
+  }
+
+  @override
+  Future<cat.Category?> getCategories() async {
+    final data = await httpUtils.getData(path: '/tasks');
+    if (data != null) {
+      final categories = cat.Category.fromJson(data);
+      return categories;
+    }
+    return null;
   }
 }
